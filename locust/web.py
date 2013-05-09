@@ -45,6 +45,7 @@ def index():
         is_distributed=is_distributed,
         slave_count=slave_count,
         user_count=runners.locust_runner.user_count,
+        num_clients=runners.locust_runner.num_clients,
         ramp = _ramp,
         version=version
     )
@@ -201,6 +202,7 @@ def request_stats():
         
         report["state"] = runners.locust_runner.state
         report["user_count"] = runners.locust_runner.user_count
+        report["num_clients"] = runners.locust_runner.num_clients
 
         elapsed = time() - now
         cache_time = max(cache_time, elapsed * 2.0) # Increase cache_time when report generating starts to take longer time
